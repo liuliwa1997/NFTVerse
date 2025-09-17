@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract NFTVerse {
+    struct NFT {
+        address owner;
+        string uri;
+    }
+
+    mapping(uint256 => NFT) public nfts;
+    uint256 public nextId;
+
+    function mint(string calldata uri) external {
+        nfts[nextId] = NFT(msg.sender, uri);
+        nextId++;
+    }
+}
